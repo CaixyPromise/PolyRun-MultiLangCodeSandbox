@@ -1,0 +1,16 @@
+# 应用服务 WEB 访问端口
+server:
+  port: 9100
+
+
+codesandbox:
+  global-code-path: "codeStorage"
+
+thread-pool:
+  instances:
+    timeout-watch-dog:
+      corePoolSize: 2
+      maxPoolSize: 4
+      queueCapacity: 30
+      keepAliveSeconds: 120
+      timeUnit: SECONDS
