@@ -3,8 +3,13 @@ server:
   port: 9100
 
 
+
 codesandbox:
   global-code-path: "codeStorage"
+
+auth:
+  request-header-text: "X-FORWARDED-FOR-CODE"
+  request-header-value: "JUDGE-CLIENT"
 
 thread-pool:
   instances:

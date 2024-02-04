@@ -47,6 +47,17 @@ public class ResultUtils
      * @param errorCode
      * @return
      */
+    public static BaseResponse error(ErrorCode errorCode, Object message)
+    {
+        return new BaseResponse(errorCode.getCode(), null, message.toString());
+    }
+
+    /**
+     * 失败
+     *
+     * @param errorCode
+     * @return
+     */
     public static BaseResponse error(ErrorCode errorCode, String message)
     {
         return new BaseResponse(errorCode.getCode(), null, message);

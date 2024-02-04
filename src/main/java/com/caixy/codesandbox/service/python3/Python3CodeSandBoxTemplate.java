@@ -7,7 +7,7 @@ import com.caixy.codesandbox.models.ExecuteCodeRequest;
 import com.caixy.codesandbox.models.ExecuteCodeResponse;
 import com.caixy.codesandbox.models.ExecuteMessage;
 import com.caixy.codesandbox.models.enums.CodeSandBoxCodeEnum;
-import com.caixy.codesandbox.models.enums.LanguageEnum;
+import com.caixy.codesandbox.models.enums.LanguageProviderEnum;
 import com.caixy.codesandbox.service.CodeSandBox;
 import com.caixy.codesandbox.service.DefaultCodeSandBoxTemplate;
 import com.caixy.codesandbox.service.java.JavaSandBoxConstants;
@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public abstract class Python3CodeSandBoxTemplate
         extends DefaultCodeSandBoxTemplate implements CodeSandBox
 {
     @Getter
-    private static final String CODE_SANDBOX_NAME = LanguageEnum.PYTHON_3.getValue();
+    private static final String CODE_SANDBOX_NAME = LanguageProviderEnum.PYTHON_3.getValue();
 
 
     /**

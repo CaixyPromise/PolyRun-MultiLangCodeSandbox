@@ -7,7 +7,7 @@ import com.caixy.codesandbox.models.ExecuteCodeRequest;
 import com.caixy.codesandbox.models.ExecuteCodeResponse;
 import com.caixy.codesandbox.models.ExecuteMessage;
 import com.caixy.codesandbox.models.enums.CodeSandBoxCodeEnum;
-import com.caixy.codesandbox.models.enums.LanguageEnum;
+import com.caixy.codesandbox.models.enums.LanguageProviderEnum;
 import com.caixy.codesandbox.service.CodeSandBox;
 import com.caixy.codesandbox.service.DefaultCodeSandBoxTemplate;
 import com.caixy.codesandbox.utils.ProcessUtils;
@@ -33,7 +33,7 @@ public abstract class JavaCodeSandBoxTemplate
         extends DefaultCodeSandBoxTemplate implements CodeSandBox
 {
     @Getter
-    private static final String CODE_SANDBOX_NAME = LanguageEnum.JAVA.getValue();
+    private static final String CODE_SANDBOX_NAME = LanguageProviderEnum.JAVA.getValue();
 
     private static final int RUNTIME_ERROR_CODE = -99999;
 
