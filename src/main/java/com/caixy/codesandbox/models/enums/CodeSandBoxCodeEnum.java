@@ -44,6 +44,8 @@ public enum CodeSandBoxCodeEnum
      * 失败
      */
     FAILED(-1, "运行失败"),
+
+    OPERATION_ERROR(-99998, "操作失败"),
     /**
      * 无权限
      */

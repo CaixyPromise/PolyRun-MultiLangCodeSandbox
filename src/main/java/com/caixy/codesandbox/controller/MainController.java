@@ -3,6 +3,7 @@ package com.caixy.codesandbox.controller;
 import com.caixy.codesandbox.common.BaseResponse;
 import com.caixy.codesandbox.common.ResultUtils;
 import com.caixy.codesandbox.expection.CodeSandBoxException;
+import com.caixy.codesandbox.mannger.RedisLimiterManager;
 import com.caixy.codesandbox.models.ExecuteCodeRequest;
 import com.caixy.codesandbox.models.ExecuteCodeResponse;
 import com.caixy.codesandbox.models.enums.CodeSandBoxCodeEnum;
@@ -37,6 +38,9 @@ public class MainController
     @Resource
     private Python3NativeCodeSandBox python3NativeCodeSandBox;
 
+    @Resource
+    private RedisLimiterManager redisLimiterManager;
+
     @GetMapping("/hello")
     public String hello()
     {
@@ -47,6 +51,7 @@ public class MainController
     public BaseResponse<ExecuteCodeResponse> runJavaCode(@RequestBody ExecuteCodeRequest executeCodeRequest,
                                                          HttpServletRequest request)
     {
+        redisLimiterManager.doRateLimiter(request.getSession().getId());
         String language = executeCodeRequest.getLanguage();
         checkLanguage(language, LanguageProviderEnum.JAVA);
         ExecuteCodeResponse response = javaNativeCodeSandBox.preExecuteCode(executeCodeRequest);
@@ -57,6 +62,7 @@ public class MainController
     public BaseResponse<ExecuteCodeResponse> runPythonCode(@RequestBody ExecuteCodeRequest executeCodeRequest,
                                                            HttpServletRequest request)
     {
+        redisLimiterManager.doRateLimiter(request.getSession().getId());
         String language = executeCodeRequest.getLanguage();
         checkLanguage(language, LanguageProviderEnum.PYTHON_3);
         ExecuteCodeResponse response = python3NativeCodeSandBox.preExecuteCode(executeCodeRequest);
